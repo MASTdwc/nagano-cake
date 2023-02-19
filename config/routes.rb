@@ -1,32 +1,64 @@
 Rails.application.routes.draw do
+ 
+
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+
+
+     root to: 'homes#top'
+     resources :genres, only: [:index, :create, :edit, :update]
+
+     resources :customers, only: [:index, :show, :edit, :update]
+  
+  
+  
+  
+  
+  
+  
+  
+  
   end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+
+
+
+
+
+  scope module: :public do
+    
+
+     resources :orders, only: [:new, :index, :create, :show]
+     post "orders/check"=>"orders#check",as:"check"
+     get "orders/over"=>"orders#over",as:"over"
+    
+     resources :cart_items, only: [:index, :update, :destroy, :create]
+     delete "cart_items/destroy_all"=>"cart_items#destroy_all",as:"destroy_all"
+     
+  
+  
+    
+    
+    
+    
+    
+    
+    
+    
+
+
   end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-  end
+
+
+
+
+
   
   
  
-  resources :customers, only: [:index, :show, :edit, :update]
   
   
   
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all,:create]
-  get "cart_items/index"=>"cart_items#index",as
-  post "cart_items/create"=>"cart_items#create",
+  
+  
   
   
   devise_for :customers
