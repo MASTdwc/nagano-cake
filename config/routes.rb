@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
      root to: 'homes#top'
      resources :genres, only: [:index, :create, :edit, :update]
+     
+
 
     
   
