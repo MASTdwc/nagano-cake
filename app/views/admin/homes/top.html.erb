@@ -11,6 +11,22 @@
   </thead>
   <tbody>
     
+    <tbody>
+    <% @order.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S') do %>
+          <%=, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= link_to book.title,book %></td>
+        <td><%= book.body %></td>
+        <td class=<%= "book_"+book.id.to_s+"_favorite" %>><%= render 'favorites/favorite', book: book %></td>
+        <td>コメント数：<%= book.book_comments.count %></td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  
   </tbody>
 </table>
 
