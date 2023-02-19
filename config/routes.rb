@@ -17,6 +17,18 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
+  
+  
+ 
+  resources :customers, only: [:index, :show, :edit, :update]
+  
+  
+  
+  resources :cart_items, only: [:index, :update, :destroy, :destroy_all,:create]
+  get "cart_items/index"=>"cart_items#index",as
+  post "cart_items/create"=>"cart_items#create",
+  
+  
   devise_for :customers
   devise_for :admins
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
