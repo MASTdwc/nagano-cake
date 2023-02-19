@@ -7,6 +7,8 @@ Rails.application.routes.draw do
      root to: 'homes#top'
      resources :genres, only: [:index, :create, :edit, :update]
 
+     resources :customers, only: [:index, :show, :edit, :update]
+  
      
      resources :orders, only: [:new, :create, :show, :index]
      resources :order_details, only: [:update]
@@ -35,9 +37,11 @@ Rails.application.routes.draw do
      post "orders/check"=>"orders#check",as:"check"
      get "orders/over"=>"orders#over",as:"over"
     
-    
-    
-    
+     resources :cart_items, only: [:index, :update, :destroy, :create]
+     delete "cart_items/destroy_all"=>"cart_items#destroy_all",as:"destroy_all"
+     
+  
+  
     
     
     
@@ -54,6 +58,16 @@ Rails.application.routes.draw do
 
 
 
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
 
 
 
