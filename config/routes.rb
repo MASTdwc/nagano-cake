@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :customers
   devise_for :admins
 
-  root to: "homes#top"
+  root to: "public/homes#top"
   get '/about' => 'home#about', as: 'about'
 
   namespace :admin do
