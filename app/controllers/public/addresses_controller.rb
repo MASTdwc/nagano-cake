@@ -14,5 +14,9 @@ class Public::AddressesController < ApplicationController
 
   def destroy
   end
+  
+  def address_display
+  '〒' + postal_code + ' ' + address + ' ' + name
+  end
 
 end
