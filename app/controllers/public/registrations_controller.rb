@@ -2,10 +2,8 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
 
-  def new
-  end
-
-  def create
+  def after_sign_up_path_for(resource)
+   customers_my_page_path
   end
 
   # before_action :configure_sign_up_params, only: [:create]
@@ -67,3 +65,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
+
+
