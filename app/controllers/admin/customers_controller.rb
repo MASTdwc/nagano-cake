@@ -21,4 +21,8 @@ class Admin::CustomersController < ApplicationController
         end
       
     end
+    
+    private
+    def customer_params
+      params.
 end
