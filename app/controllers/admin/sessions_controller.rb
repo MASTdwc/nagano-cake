@@ -41,14 +41,14 @@ protected
    @customer = Customer.find_by(email: params[:customer][:email])
    return if !@customer
    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
-     flash[:notice] = "退会済みです。再度ご登録をお願い致します"
+     flash[:notice] = "退会済みです。再度ご登録をお願い致します。"
      redirect_to new_customer_session_path
    else
      customer_session_path
    end
   end
   
-  
-
 end
+
+
 
