@@ -1,2 +1,55 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <h2 class="my-3 px-3 col-md-4 text-center"> 注文情報入力</h2>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= form_with model:@order, url:confirm_path , method: :post do |f| %>
+      <div>
+        <h4>支払い方法</h3>
+        <div class="col-md-12 table table-hover">
+          <p>
+            <%= f.radio_button :pay_method, "credit_card" %>
+            <%= f.label :pay_method_credit_card, "クレジットカード" %>
+          </p>
+          <p>
+            <%= f.radio_button :pay_method, "transfer" %>
+            <%= f.label :pay_method_transfer, "銀行振込" %>
+          </p>
+        </div>
+        <h4>お届け先</h3>
+        <div class="col-md-12 table table-hover">
+          <p><%= f.radio_button:select_address,0,{:checked => true} %>ご自身の住所</p>
+          <p>
+            <%= current_customer.address_display %><br>
+            <%= current_customer.full_name %>
+          </p>
+        </div>
+        <div class="col-md-12 table table-hover">
+          <p><%= f.radio_button:select_address,1 %>登録済み住所</p>
+          <p><%= f.select:address_id,options_from_collection_for_select(@addresses,:id,:address_display) %></p>
+        </div>
+        <div class="col-md-12 table table-hover">
+          <p><%= f.radio_button:select_address,2 %>新しいお届け先</p>
+          <table>
+          <tr>
+            <td class="col-md-3">郵便番号（ハイフンなし）</td>
+            <td><%= f.text_field:post_code, placeholder: "0000000" %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">住所</td>
+            <td><%= f.text_field:address,size: "65x5", placeholder: "東京都渋谷区代々木神園町0−0" %> %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">宛名</td>
+            <td><%= f.text_field:name placeholder: "令和道子" %></td>
+          </tr>
+          </table>
+        </div>
+      </div>
+      <div class="my-3 col-lg-2 ml-auto">
+        <%= f.submit "確認画面へ進む",class:"btn btn-lg btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
