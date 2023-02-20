@@ -5,12 +5,109 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <header>
+    <!--ヘッダーの色-->
+    <nav class="navbar navbar-expand-lg" style="background-color:  #DAC3B2;">
+      <!--トップ画面へのルートと画像-->
+      <%= link_to root_path("homes#top") do %>
+        <%= image_tag 'rogo.png', size: '200x200', class: "img-fluid" %>
+      <% end %>
+      <!--ナビリストの右寄せ-->
+       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+      <%# if customer_signed_in? %>
+        <li style="margin: 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">マイページ</button>
+          <% end %>
+        </li>
+        <li style="margin: 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">商品一覧</button>
+          <% end %>
+        </li>
+        <li style="margin: 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">カート</button>
+          <% end %>
+        </li>
+        <li style="margin: 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">ログアウト</button>
+          <% end %>
+        </li>
+
+      <%# elsif admin_signed_in? %>
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">商品一覧</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">会員一覧</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">注文履歴一覧</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">ジャンル一覧</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">ログアウト</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+
+      <!--<%# else %>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">About</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">商品一覧</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">新規登録</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+      <!--  <li style="margin; 10px">-->
+      <!--    <%#= link_to class:"nav-link text-light" do %>-->
+      <!--    <button type="button" class="btn btn-light">ログイン</button>-->
+      <!--    <%# end %>-->
+      <!--  </li>-->
+        </ul>
+      </div>
+
+      <%# end %>
+        <div class="search-box" style="margin: 10px;">
+          <input type="text" class="form-control" placeholder="Search">
+          <i class="fas fa-search" style="color:#fff;"></i>
+        </div>
+
+    </div>
+    </nav>
+  </header>
+
     <%= yield %>
-  </body>
+      <footer  class="navbar navbar-expand-lg" style="background-color:  #DAC3B2;">
+        <div class="container mt-5">
+        </div>
+        <div class="row"></div>
+        <div class="mx-auto"></div>
+      </footer>
 </html>
