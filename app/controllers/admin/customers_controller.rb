@@ -23,6 +23,7 @@ class Admin::CustomersController < ApplicationController
     end
     
     private
-    def customer_params
-      params.
+      def customer_params
+        params.require(:customer).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:email,:postacode,:address,:telephone_number,:is_deleted)
+      end
 end
