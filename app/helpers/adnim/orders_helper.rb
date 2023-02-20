@@ -1,0 +1,2 @@
+module Adnim::OrdersHelper
+end

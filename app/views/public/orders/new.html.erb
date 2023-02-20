@@ -1,0 +1,20 @@
+<h1>注文情報入力</h1>
+
+<h2>支払方法</h2>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method_credit_card, "クレジットカード" %>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method_transfer, "銀行振込" %>
+
+<h2>お届け先</h2>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+ご自身の住所
+登録済み住所から選択
+新しいお届け先
+郵便番号（ハイフンなし）
+住所
+宛名
+
+
+<td><%= link_to '確認画面へ進む', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
