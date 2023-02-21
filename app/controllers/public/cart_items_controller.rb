@@ -30,7 +30,7 @@ class Public::CartItemsController < ApplicationController
     # カート内商品データ追加
     def create
       if cart_items.find_by(item_id: params)
-          
+      end    
     end
     
     def params_cart_product
