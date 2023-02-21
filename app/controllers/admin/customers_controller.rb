@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
     def index
+      #@customers = Customer.allからページネーションの為、下記に変更
       @customers = Customer.page(params[:page])
     end
     
