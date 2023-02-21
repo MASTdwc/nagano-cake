@@ -13,6 +13,9 @@ class Customer < ApplicationRecord
   validates :email, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :postcode, presence: true, format: /\A\d{7}\z/
   validates :address, presence: true
-  validates :phone_number, presence: true, format: /\A\d{10,11}\z/       
+  validates :phone_number, presence: true, format: /\A\d{10,11}\z/ 
+  
+  has_many :cart_items,dependent: :destroy
+  
 end
 
