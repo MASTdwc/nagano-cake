@@ -1,5 +1,9 @@
 class Public::OrdersController < ApplicationController
+<<<<<<< HEAD
  before_action :authenticate_customer!
+=======
+
+>>>>>>> origin/develop
 
   def new
     @order=Order.new
@@ -9,15 +13,20 @@ class Public::OrdersController < ApplicationController
 
   def confirm
      @order=Order.new(order_params)
+<<<<<<< HEAD
+=======
+      binding.pry
+
+>>>>>>> origin/develop
 
 
     if params[:order][:select_address]=='0'
-      @order.post_code=current_customer.postcode
+      @order.postal_code=current_customer.postcode
       @order.name=current_customer.last_name+current_customer.first_name
       @order.address=current_customer.address
     elsif params[:order][:select_address]=='1'
       @address=Address.find(params[:order][:address_id])
-      @order.post_code=@address.postcode
+      @order.post_code=@address.postal_code
       @order.name=@address.name
       @order.address=@address.address
     elsif params[:order][:select_address]=='2'
@@ -35,6 +44,7 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
+<<<<<<< HEAD
   def create
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
@@ -60,10 +70,12 @@ class Public::OrdersController < ApplicationController
 
 
 
+=======
+>>>>>>> origin/develop
   private
 
     def order_params
-        params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code ,:customer_id,:total_payment,:making_status)
+        params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code ,:customer_id,:total_payment, :status)
     end
 
 
