@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :customers
   devise_for :admins
 
+  devise_for :customers,skip: [:passwords], controllers: {
+   registrations: "public/registrations",
+   sessions: 'public/sessions'
+  }
+  
   root to: "public/homes#top"
   get '/about' => "public/homes#about", as: "about"
 
@@ -24,7 +28,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    get "customers/show" => "customers#show", as:"my_page"
+    get "customers/show" => "customers#show", as:"customers_my_page"
     get "customers/edit" => "customers#edit", as:"information/edit"
     patch "customers/update" => "customers#update", as:"information"
     get "customers/unsubscribe" => "customers#unsubscribe", as:"unsubscribe"
@@ -35,6 +39,10 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+
+
 
 
 

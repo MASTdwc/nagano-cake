@@ -12,12 +12,12 @@
   
    <table class="table table-borderless">
     <tr>
-     <td>メールアドレス</td>
+     <td><%= f.label :"メールアドレス" %></td>
      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
     </tr>
   
     <tr>
-     <td>パスワード</td>
+     <td><%= f.label :"パスワード" %></td>
      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
     </tr>
     
@@ -42,6 +42,10 @@
   </p>
 
 </div>
+
+
+
+
 
 
 
