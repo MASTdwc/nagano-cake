@@ -3,7 +3,6 @@
   <div class="col-md-8 offset-md-1 mt-5">
    <h2><span class="bg-secondary">新規会員登録</span></h2>
   </div>
- 
   <div class="col-md-8 offset-md-1 mt-5">
    <%= form_with model: @customer, url: customer_registration_path do |f| %>
    <%= render "public/shared/error_messages", resource: resource %>
@@ -18,10 +17,12 @@
        <%= f.text_field :first_name, autofocus: true %>
      </td>
     </tr>
-    
     <tr>
      <td>フリガナ</td>
+<<<<<<< HEAD
      
+=======
+>>>>>>> origin/develop
      <td>
        <%= f.label :"(セイ)"%>
        <%= f.text_field :last_name_kana, autofocus: true %>
@@ -31,48 +32,45 @@
       <%= f.text_field :first_name_kana, autofocus: true %>
      </td>
     </tr>
-
     <tr>
      <td><%= f.label :"メールアドレス" %></td>
      <td>
       <%= f.email_field :email, autofocus: true %>
      </td>
     </tr>
-    
     <tr>
      <td nowrap><%= f.label :"郵便番号(ハイフンなし)" %></td>
      <td>
       <%= f.text_field :postcode, autofocus: true %>
      </td>
     </tr>
-    
     <tr>
      <td><%= f.label :"住所" %></td>
      <td>
       <%= f.text_field :address, autofocus: true %>
      </td>
     </tr>
-    
     <tr>
      <td><%= f.label :"電話番号(ハイフンなし)" %></td>
      <td>
       <%= f.text_field :phone_number, autofocus: true %>
      </td>
     </tr>
-    
     <tr>
      <td><%= f.label :"パスワード（6文字以上）" %></td>
+<<<<<<< HEAD
      <td><%= f.password_field :encrypted_password %>
+=======
+     <td><%= f.password_field :password %>
+>>>>>>> origin/develop
      </td>
     </tr>
-    
     <tr>
      <td><%= f.label :"パスワード（確認用）" %></td>
      <td>
       <%= f.password_field :password_confirmation %>
      </td>
     </tr>
-    
     <tr>
      <td></td>
      <td></td>
@@ -85,7 +83,6 @@
    </table>
    <% end %>
   </div>
-
   <div class="col-md-8 offset-md-1 mt-5">
    <h2><span class="bg-secondary">既に登録済みの方</span></h2>
    <p class="mt-3">
@@ -97,6 +94,9 @@
   </div>
  </div>
 </div>
+
+
+
 
 
 
