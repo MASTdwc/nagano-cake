@@ -20,14 +20,14 @@
       <!--ナビリストの右寄せ-->
        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-      <%# if customer_signed_in? %>
+      <% if customer_signed_in? %>
         <li style="margin: 10px">
           <%= link_to class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">マイページ</button>
           <% end %>
         </li>
         <li style="margin: 10px">
-          <%= link_to class:"nav-link text-light" do %>
+          <%= link_to items_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">商品一覧</button>
           <% end %>
         </li>
@@ -42,58 +42,58 @@
           <% end %>
         </li>
 
-      <%# elsif admin_signed_in? %>
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">商品一覧</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">会員一覧</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">注文履歴一覧</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">ジャンル一覧</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">ログアウト</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
+      <% elsif admin_signed_in? %>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">商品一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">会員一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">注文履歴一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">ジャンル一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">ログアウト</button>
+          <% end %>
+        </li>
 
-      <!--<%# else %>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">About</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">商品一覧</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">新規登録</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
-      <!--  <li style="margin; 10px">-->
-      <!--    <%#= link_to class:"nav-link text-light" do %>-->
-      <!--    <button type="button" class="btn btn-light">ログイン</button>-->
-      <!--    <%# end %>-->
-      <!--  </li>-->
+      <% else %>
+        <li style="margin; 10px">
+          <%= link_to about_path class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">About</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">商品一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">新規登録</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">ログイン</button>
+          <% end %>
+        </li>
         </ul>
       </div>
 
-      <%# end %>
+      <% end %>
         <div class="search-box" style="margin: 10px;">
           <input type="text" class="form-control" placeholder="Search">
           <i class="fas fa-search" style="color:#fff;"></i>
@@ -108,6 +108,6 @@
         <div class="container mt-5">
         </div>
         <div class="row"></div>
-        <div class="mx-auto"></div>
+        <!--<div class="mx-auto"></div>-->
       </footer>
 </html>
