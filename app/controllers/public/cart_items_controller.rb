@@ -29,7 +29,8 @@ class Public::CartItemsController < ApplicationController
     end
     # カート内商品データ追加
     def create
-      if cart_items.find_by()
+      if cart_items.find_by(item_id: params)
+          
     end
     
     def params_cart_product
