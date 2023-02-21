@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    get "customers/show" => "customers#show", as:"my_page"
+    get "customers/show" => "customers#show", as:"customers_my_page"
     get "customers/edit" => "customers#edit", as:"information/edit"
     patch "customers/update" => "customers#update", as:"information"
     get "customers/unsubscribe" => "customers#unsubscribe", as:"unsubscribe"
