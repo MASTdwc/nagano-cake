@@ -27,26 +27,6 @@ class Admin::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  def after_sign_in_path_for(resource)
-    items_path
-  end
-
-  def after_sign_out_path_for(resource)
-   new_customer_session_path
-  end
-
-protected
-
-  def reject_customer
-   @customer = Customer.find_by(email: params[:customer][:email])
-   return if !@customer
-   if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
-     flash[:notice] = "退会済みです。再度ご登録をお願い致します。"
-     redirect_to new_customer_session_path
-   else
-     customer_session_path
-   end
-  end
 
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:attrivute])

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :customers
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
+  sessions: 'admin/sessions'
 }
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   get '/about' => "public/homes#about", as: "about"
 
   namespace :admin do
-    root to: "homes#top"
+    root to: "toppages#index"
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:indes, :show, :create]
