@@ -2,18 +2,14 @@ class Item < ApplicationRecord
  has_many :order_details #中間テーブル
  has_many :orders, through: :order_details
  has_many :cart_items,dependent: :destroy
-<<<<<<< HEAD
  belongs_to :genre
 
  has_one_attached :image
-=======
->>>>>>> origin/develop
 
     ## 消費税を求めるメソッド
     def with_tax_price
         (price * 1.1).floor
     end
-<<<<<<< HEAD
 
   def get_image
     unless image.attached?
@@ -22,8 +18,6 @@ class Item < ApplicationRecord
     end
       image.variant(resize_to_limit: [100, 100]).processed
   end
-=======
->>>>>>> origin/develop
 end
 
 
