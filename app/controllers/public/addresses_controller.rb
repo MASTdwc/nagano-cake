@@ -12,8 +12,10 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path
+      render :index
+    end
   end
 
   def update
@@ -28,15 +30,15 @@ class Public::AddressesController < ApplicationController
     redirect_to addresses_path
   end
 
-  def address_display
-  '〒' + postal_code + ' ' + address + ' ' + name
-  end
+  # def address_display
+  # '〒' + postal_code + ' ' + address + ' ' + name
+  # end
 
 
   private
 
   def address_params
-    params.require(:address).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:postal_code, :address, :name, :customer_id)
   end
 
 end
