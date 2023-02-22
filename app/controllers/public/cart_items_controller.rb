@@ -1,8 +1,8 @@
 class Public::CartItemsController < ApplicationController
-    before_action :authenticate_customer!
+    before_action :authenticate_member!
     def index
       @cart_items=current_customer.cart_items
-      @total_price =0
+      @total_price =current_customer.cart_items.total_price(@cart_items)
     end
     
     def update
@@ -46,6 +46,6 @@ class Public::CartItemsController < ApplicationController
 
 private
     def cart_item_params
-      params.require(:cart_item).permit(:amount, :item_id)
+      params.require(:cart_item).permit(:amount, :item_id,:price)
     end
 end
