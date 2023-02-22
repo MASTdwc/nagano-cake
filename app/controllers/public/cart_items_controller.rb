@@ -1,8 +1,8 @@
 class Public::CartItemsController < ApplicationController
-    before_action :authenticate_member!
+    before_action :authenticate_customer!
     def index
       @cart_items=current_customer.cart_items
-      @total_price =current_customer.cart_items.total_price(@cart_items)
+      @total_price =0
     end
     
     def update
