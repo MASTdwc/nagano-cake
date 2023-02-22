@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   # validates :phone_number, presence: true, format: /\A\d{10,11}\z/
 
   has_many :addresses
-  has_many :cart_items,dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   has_many :orders
 
 end

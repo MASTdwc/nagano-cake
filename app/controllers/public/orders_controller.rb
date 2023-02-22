@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
 
+ before_action :authenticate_customer!
+
 
   def new
     @order=Order.new
@@ -9,8 +11,6 @@ class Public::OrdersController < ApplicationController
 
   def confirm
      @order=Order.new(order_params)
-      binding.pry
-
 
 
     if params[:order][:select_address]=='0'
@@ -25,10 +25,10 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address]=='2'
       @order.customer_id=current_customer.id
     end
-    @cart_items=current_customer.cart_items.all
-    @total_price = CartItem.total_payment(current_customer)
-    @order_new=Order.new
-    # render :confirm
+    @cart_items = current_customer.cart_items.all
+    @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
+    @order_new = Order.new
+    
   end
 
   def index
@@ -56,6 +56,9 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       render :new
     end
+  end
+  
+  def complete
   end
 
 
