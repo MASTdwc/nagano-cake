@@ -14,4 +14,8 @@ class CartItem < ApplicationRecord
   def subtotal
     item.with_tax_price * amount
   end
+  
+  def self.total_price(customer)
+    CartItem.where(customer_id: customer.id).inject(0){|sum, cart_item| sum + cart_item.subtotal}
+  end
 end

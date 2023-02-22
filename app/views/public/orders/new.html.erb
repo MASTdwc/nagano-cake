@@ -2,7 +2,7 @@
   <h2 class="my-3 px-3 col-md-4 text-center"> 注文情報入力</h2>
   <div class="row">
     <div class="col-lg-12">
-      <%= form_with model:@order, url:confirm_path , method: :post do |f| %>
+      <%= form_with model: @order, url: confirm_path , method: :post do |f| %>
       <div>
         <h4>支払い方法</h3>
         <div class="col-md-12 table table-hover">
@@ -17,30 +17,27 @@
         </div>
         <h4>お届け先</h3>
         <div class="col-md-12 table table-hover">
-          <p><%= f.radio_button:select_address,0,{:checked => true} %>ご自身の住所</p>
-          <p>
-            <%= current_customer.address_display %><br>
-            <%= current_customer.full_name %>
-          </p>
+          <p><%= f.radio_button :select_address,0,{:checked => true} %>ご自身の住所</p>
+          <p><% @customer.address %></p>
         </div>
         <div class="col-md-12 table table-hover">
-          <p><%= f.radio_button:select_address,1 %>登録済み住所</p>
+          <p><%= f.radio_button :address_option, 1 %><%= f.label :address_option, "登録済住所から選択" %></p>
           <p><%= f.select:address_id,options_from_collection_for_select(@addresses,:id,:address_display) %></p>
         </div>
         <div class="col-md-12 table table-hover">
-          <p><%= f.radio_button:select_address,2 %>新しいお届け先</p>
+          <p><%= f.radio_button :select_address,2 %>新しいお届け先</p>
           <table>
           <tr>
             <td class="col-md-3">郵便番号（ハイフンなし）</td>
-            <td><%= f.text_field:postal_code, placeholder: "0000000" %></td>
+            <td><%= f.text_field :postal_code, placeholder: "0000000" %></td>
           </tr>
           <tr>
             <td class="col-md-3">住所</td>
-            <td><%= f.text_field:address,size: "65x5", placeholder: "東京都渋谷区代々木神園町0−0" %> %></td>
+            <td><%= f.text_field :address,size: "65x5", placeholder: "東京都渋谷区代々木神園町0−0" %> </td>
           </tr>
           <tr>
             <td class="col-md-3">宛名</td>
-            <td><%= f.text_field:name placeholder: "令和道子" %></td>
+            <td><%= f.text_field :name, placeholder: "令和道子" %></td>
           </tr>
           </table>
         </div>
