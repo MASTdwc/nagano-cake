@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
+
  before_action :authenticate_customer!
+
 
   def new
     @order=Order.new
@@ -9,7 +11,6 @@ class Public::OrdersController < ApplicationController
 
   def confirm
      @order=Order.new(order_params)
-     
 
 
     if params[:order][:select_address]=='0'

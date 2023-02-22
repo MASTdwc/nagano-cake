@@ -19,3 +19,4 @@ class CartItem < ApplicationRecord
     CartItem.where(customer_id: customer.id).inject(0){|sum, cart_item| sum + cart_item.subtotal}
   end
 end
+
