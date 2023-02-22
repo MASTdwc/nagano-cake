@@ -36,8 +36,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order =
-    @order_items =
+    @order = Order.find(params[:id])
+    @order_items = OrderDetail.where(order_id:params[:id])
     @total_price = CartItem.total_price(current_customer)
   end
 
