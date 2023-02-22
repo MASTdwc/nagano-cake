@@ -13,10 +13,10 @@
   <% @items.each do |item| %>
     <div class="col-3 mx-auto">
       <%= link_to item_path(item.id) do %>
-           <%= image_tag item.image, size: "200x200" %>
+           <%= image_tag item.image, size: "200x160" %>
         <% end %>
-      <p><%= item_all.name %></p>
-      <p>￥<%= item.add_tax_price %></p>
+      <p><%= item.name %></p>
+      <p>¥<%= item.price.to_s(:delimited) %>></p>
     </div>
   <% end %>
 </div>
@@ -26,4 +26,5 @@
     <%= paginate @items %>
   </div>
 </div>
+
 

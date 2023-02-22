@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-12 table table-hover">
           <p><%= f.radio_button :address_option, 1 %><%= f.label :address_option, "登録済住所から選択" %></p>
-          <p><%= f.select:address_id,options_from_collection_for_select(@addresses,:id,:address_display) %></p>
+          <p><%= f.select :address_id, options_from_collection_for_select(@addresses,:id,:address_display) %></p>
         </div>
         <div class="col-md-12 table table-hover">
           <p><%= f.radio_button :select_address,2 %>新しいお届け先</p>
