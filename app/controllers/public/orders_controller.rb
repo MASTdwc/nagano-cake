@@ -14,11 +14,7 @@ class Public::OrdersController < ApplicationController
     @cart_items= current_customer.cart_items.all
     #今ログインしているuserにアソシエーションで紐づいているcart_items
     @total_price = CartItem.total_price(current_customer)
-    
-    
-     
-
-
+   
     if params[:order][:select_address]=='0'
       @order.postal_code=current_customer.postcode
       @order.name=current_customer.last_name+current_customer.first_name
@@ -31,15 +27,18 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address]=='2'
       @order.customer_id=current_customer.id
     end
-    
-    
-    
   end
 
   def index
+    @customer = current_customer
+    @order = @customer.orders.all.order(id: "DESC")
+    @orders = @order.page(params[:page]).per(10)
   end
 
   def show
+    @order =
+    @order_items =
+    @total_price = CartItem.total_price(current_customer)
   end
 
   def create
