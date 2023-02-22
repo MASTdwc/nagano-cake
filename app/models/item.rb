@@ -3,7 +3,7 @@ class Item < ApplicationRecord
  has_many :orders, through: :order_details
  has_many :cart_items,dependent: :destroy
  belongs_to :genre
-
+ 
  has_one_attached :image
 
   
@@ -16,5 +16,14 @@ class Item < ApplicationRecord
       image.variant(resize_to_limit: [100, 100]).processed
   end
 end
+
+
+
+
+
+
+
+
+
 
 
