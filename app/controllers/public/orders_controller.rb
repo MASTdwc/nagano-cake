@@ -1,7 +1,5 @@
 class Public::OrdersController < ApplicationController
-
  before_action :authenticate_customer!
-
 
   def new
     @order=Order.new
@@ -10,7 +8,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-     @order=Order.new(order_params)
+    @cart_item = CartItem.find(params[:id])
+    @order=Order.new(order_params)
+    @cart_items=current_customer.cart_items.all
+    @total_price = CartItem.total_price(current_customer)
+    @order_new=Order.new
+    
+     
 
 
     if params[:order][:select_address]=='0'
@@ -25,9 +29,8 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address]=='2'
       @order.customer_id=current_customer.id
     end
-    @cart_items = current_customer.cart_items.all
-    @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
-    @order_new = Order.new
+    
+    
     
   end
 
