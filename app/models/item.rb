@@ -3,7 +3,7 @@ class Item < ApplicationRecord
  has_many :orders, through: :order_details
  has_many :cart_items,dependent: :destroy
  belongs_to :genre
-
+ 
  has_one_attached :image
 
   
@@ -23,6 +23,9 @@ end
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> develop
