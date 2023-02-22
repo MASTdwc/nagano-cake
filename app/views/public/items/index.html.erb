@@ -13,10 +13,10 @@
   <% @items.each do |item| %>
     <div class="col-3 mx-auto">
       <%= link_to item_path(item.id) do %>
-        <%= image_tag item_all.get_item_image(200,100) %>
+        <%= image_tag item.image, size: "200x200" %>
       <% end %>
-      <p><%= item_all.name %></p>
-      <p>￥<%= item.add_tax_price %></p>
+      <p><%= item.name %></p>
+      <p>￥<%= item.price %></p>
     </div>
   <% end %>
 </div>
