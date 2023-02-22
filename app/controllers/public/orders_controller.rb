@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
     #@cart_item = CartItem.find(params[:id])#urlから引っ張ってくるid
     @cart_items= current_customer.cart_items.all
     #今ログインしているuserにアソシエーションで紐づいているcart_items
-    #@total_price = CartItem.total_price(current_customer)
+    @total_price = CartItem.total_price(current_customer)
     
     
      
