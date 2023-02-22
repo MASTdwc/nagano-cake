@@ -1,9 +1,5 @@
 class Public::OrdersController < ApplicationController
-<<<<<<< HEAD
- before_action :authenticate_customer!
-=======
 
->>>>>>> origin/develop
 
   def new
     @order=Order.new

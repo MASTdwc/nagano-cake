@@ -4,14 +4,22 @@
       <%= image_tag @item.get_image(300,300) %>
     </div>
       <!--注文フォーム-->
-      
-      <%= form_with model:@cart_item,url: cart_items_path do |f| %>
-        <% if @item.is_active == true %>
-          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], { include_blank: "個数選択" } %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.submit "カートに入れる", class:"actions btn btn-success" %>
-      <% end %>
-    
-
+    <%= form_with model:@cart_item,url: cart_items_path do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+        <p class="h4 font-weight-bold"><%= @item.name %></p>
+        <p><%= @item.intrduction %></p>
+        <p class="h5 font-weight-bold">
+          ￥<%= @item.price.to_s(:delimited) %>
+          <span class="small">(税込)</span>
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], { include_blank: "個数選択" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
