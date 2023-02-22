@@ -21,11 +21,11 @@ class Item < ApplicationRecord
 end
 
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> origin/develop
+
+
+
