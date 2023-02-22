@@ -4,7 +4,7 @@
       <%= image_tag @item.image, size: "300,300" %>
     </div>
       <!--注文フォーム-->
-    <%= form_with model:@cart_item,url: cart_items_path do |f| %>
+    <%= form_with model:@cart_item,url:cart_items_path do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
         <p class="h4 font-weight-bold"><%= @item.name %></p>
         <p><%= @item.introduction %></p>
