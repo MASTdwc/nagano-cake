@@ -1,13 +1,13 @@
 <div class="container p-5">
   <div class="row p-3">
     <div class="mx-auto">
-      <%= image_tag @item.get_image(300,300) %>
+      <%= image_tag @item.image, size: "300,300" %>
     </div>
       <!--注文フォーム-->
     <%= form_with model:@cart_item,url: cart_items_path do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
         <p class="h4 font-weight-bold"><%= @item.name %></p>
-        <p><%= @item.intrduction %></p>
+        <p><%= @item.introduction %></p>
         <p class="h5 font-weight-bold">
           ￥<%= @item.price.to_s(:delimited) %>
           <span class="small">(税込)</span>
