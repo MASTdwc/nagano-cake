@@ -6,7 +6,7 @@
 <div class='container'>
  <div class='row'>
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto pt-5">
-   <%= image_tag @item.get_image(500) %><br>
+   <%= image_tag @item.get_image %><br>
     <p><%= "商品名" %>　<%= @item.id %></p>
     <p><%= "商品詳細" %>　<%= @item.introduction %></p>
     <p><%= "ジャンル" %>　<%= @genre.name %></p>
@@ -18,10 +18,12 @@
 <div class="container">
  <div class="row">
   <div class="mx-auto">
-   <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+   <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
   </div>
  </div>
 </div>
+
+
 
 
 
