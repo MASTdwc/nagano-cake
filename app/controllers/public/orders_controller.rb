@@ -1,9 +1,5 @@
 class Public::OrdersController < ApplicationController
-<<<<<<< HEAD
  before_action :authenticate_customer!
-=======
-
->>>>>>> origin/develop
 
   def new
     @order=Order.new
@@ -13,12 +9,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
      @order=Order.new(order_params)
-<<<<<<< HEAD
      
-=======
-      binding.pry
-
->>>>>>> origin/develop
 
 
     if params[:order][:select_address]=='0'
