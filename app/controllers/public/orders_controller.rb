@@ -10,6 +10,9 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_item = CartItem.find(params[:id])
     @order=Order.new(order_params)
+    @cart_items=current_customer.cart_items.all
+    @total_price = CartItem.total_price(current_customer)
+    @order_new=Order.new
     
      
 
@@ -26,6 +29,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address]=='2'
       @order.customer_id=current_customer.id
     end
+    
     
     
   end
