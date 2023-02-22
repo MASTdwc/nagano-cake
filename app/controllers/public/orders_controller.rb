@@ -8,11 +8,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_item = CartItem.find(params[:id])
-    @order=Order.new(order_params)
-    @cart_items=current_customer.cart_items.all
-    @total_price = CartItem.total_price(current_customer)
-    @order_new=Order.new
+    @order = Order.new(order_params)
+   
+    #@cart_item = CartItem.find(params[:id])#urlから引っ張ってくるid
+    @cart_items= current_customer.cart_items.all
+    #今ログインしているuserにアソシエーションで紐づいているcart_items
+    #@total_price = CartItem.total_price(current_customer)
+    
     
      
 
