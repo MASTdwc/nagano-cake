@@ -9,7 +9,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
      @order=Order.new(order_params)
+<<<<<<< HEAD
      
+=======
+      binding.pry
+
+>>>>>>> origin/develop
 
 
     if params[:order][:select_address]=='0'
