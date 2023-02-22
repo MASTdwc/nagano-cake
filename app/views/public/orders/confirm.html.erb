@@ -1,67 +1,73 @@
+
 <div class="container">
   <h2 class="px-3 my-3 col-md-4 text-center">注文情報確認</h2>
   <div class="row">
     <div class="col-8">
-      <table class="table table-hover table-inverse">
-        <thead>
+      <table class="table table-bordered">
+        <thead class="table-dark">
           <tr>
             <th>商品名</th>
-            <th>単価(税込)</th>
+            <th>単価（税込み）</th>
             <th>数量</th>
             <th>小計</th>
-            <th></th>
           </tr>
         </thead>
-         <tbody>
-            <% @cart_items.each do |cart_item| %>
-              <tr>
-                <td><%= attachment_image_tag cart_item.image %><%= cart_item.name %></td>
-                <td>￥<%= cart_item.item.with_tax_price%></td>
-                <td><%=form_with model: cart_item,cart_items_path(cart_item),local:true do |f| %></td>
-                      <%=f.hidden_field :id, :value => cart_item.id %>
-                      <%= f.number_field:amount, size:1,min:1 %><%=f.submit "変更" %>
-                    <% end %>
-                </td>
-                <td><%= cart_item.subtotal %></td>
-                <td> <%= link_to cart_items_path(cart_item), method: :delete do %>
-                       <button class="btn btn-danger">削除</button>
-                     <% end %>
-                </td>
-              </tr>
-             <% end %>
-           </table>
-             <div class="row">
-               <%=link_to root_path do %>
-                 <button class="btn btn-primary">買い物を続ける</button>
-               <% end %>
-             </div>
-               <table class="total_price">
-                 <tr>
-                   <th>合計金額</th>
-                   <td>￥<% @total_price+= cart_item.subtotal %></td>
-                 </tr>
-                </tablw>
-              </div>
-              <div class="text-center">
-                <% if current_customer.cart_items.any? %>
-                  <%=link_to new_oder_path do %>
-                    <button class="btn btn-lg btn-succcess">情報入力に進む</button>
-                  <% end %>
-                <% end %>
-               </div>
-           </tbody>
-          </table>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <% @total = 0 %>
+          <tr>
+            <td>
+              <%= image_tag cart_item.item.get_image,size: "70x60" %>
+              <%= cart_item.item.name %>
+            </td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.count %></td>
+            <td><%= (@total += cart_item.subtotal) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3  offset-1">
+      <table class="table table-bordered table-sm">
+        <tr>
+          <th class="table-dark">送料</th>
+          <td>800</td>
+        </tr>
+        <tr>
+          <th class="table-dark">商品合計</th>
+          <td><%= @total_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th class="table-dark">請求金額</th>
+          <td><%= (@total_price + 800).to_s(:delimited) %></td>
+        </tr>
+      </table>
+      </div>
+      <table class="col-md-9 table table-borderless">
+        <tr>
+          <th>支払い方法</th>
+          <td><%= @order.pay_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>お届け先</th>
+          <td>
+            <%= @order.address_display %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="col-1 mt-5 mb-5 mx-auto">
       <%= form_with model:@order_new,method: :post do |f| %>
         <%= f.hidden_field:customer_id,value:current_customer.id %>
         <%= f.hidden_field:status,value:Order.statuses.key(0) %>
         <%= f.hidden_field:name,value:@order.name %>
-        <%= f.hidden_field:postal_code,value:@order.post_code %>
+        <%= f.hidden_field:post_code,value:@order.post_code %>
         <%= f.hidden_field:address,value:@order.address %>
-        <%= f.hidden_field:shipping_cost,value:800 %>
-        <%= f.hidden_field:pay_payment,value:@total_payment + 800 %>
-        <%= f.hidden_field:payment_method,value:@order.pay_method %>
+        <%= f.hidden_field:postage,value:800 %>
+        <%= f.hidden_field:pay_total,value:@total_price + 800 %>
+        <%= f.hidden_field:pay_method,value:@order.pay_method %>
        <%= f.submit "注文を確定する",class:"btn btn-lg btn-success" %>
       <% end %>
     </div>
