@@ -1,7 +1,8 @@
 class Public::CartItemsController < ApplicationController
+    before_action :authenticate_member!
     def index
       @cart_items=current_customer.cart_items
-      @total_price =current_customer.cart_products.cart_products_total_price(@cart_products)
+      @total_price =current_customer.cart_items.total_price(@cart_items)
     end
     
     def update
@@ -29,11 +30,22 @@ class Public::CartItemsController < ApplicationController
     end
     # カート内商品データ追加
     def create
-      if cart_items.find_by(item_id: params)
-          
+      @cart_item=current_customer.cart_items.new(cart_item_params)
+      if cart_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+        cart_item=current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+        cart_item.amount+=params[:cart_item][:amount].to_i
+        cart_items.save
+        redirect_to cart_items_path
+       elsif @cart_item.save
+         @cart_items=current_customer.cart_items.all
+         render 'index'
+       else
+         render 'index'
+       end    
     end
-    
-    def params_cart_product
-    params.require(:cart_item).permit(:amount, :item_id)
+
+private
+    def cart_item_params
+      params.require(:cart_item).permit(:amount, :item_id,:price)
     end
 end
