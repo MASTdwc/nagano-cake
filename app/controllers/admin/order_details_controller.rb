@@ -1,10 +1,9 @@
 class Admin::OrderDetailsController < ApplicationController
 
   def update
-    @order = Order.find(params[:order_id])
+    # @order = Order.find(params[:order_id])
     @order_detail = OrderDetail.find(params[:id])
-    @order_details = @order.order_details.all
-
+    @order_detail = @order_details
     @order_detail.update(order_details_params)
     if @order_details.where(product_status: 2).count >=1
       @order.status = 2
