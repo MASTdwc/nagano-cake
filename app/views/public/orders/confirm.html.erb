@@ -21,8 +21,9 @@
               <%= image_tag cart_item.item.get_image,size: "70x60" %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td><%= cart_item.count %></td>
+            <td>￥<%= cart_item.item.price%></td>
+            <!--<td><%#= cart_item.item.with_tax_price %></td>-->
+            <td><%= cart_item.amount %></td>
             <td><%= @total += cart_item.subtotal %></td>
 
           </tr>
