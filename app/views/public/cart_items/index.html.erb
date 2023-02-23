@@ -55,17 +55,15 @@
         </tr>
       </table>
     </div>
-  
-             <div class="text-center">
-                <% if current_customer.cart_items.any? %>
-                  <%=link_to new_order_path do %>
-                    <button class="btn btn-md btn-primary">情報入力に進む</button>
-                  <% end %>
-                <% end %>
-                 
-               </div>
-           </tbody>
-          </table>
+      <div class="text-center">
+        <% if current_customer.cart_items.any? %>
+          <%=link_to new_order_path do %>
+            <button class="btn btn-md btn-primary">情報入力に進む</button>
+          <% end %>
+        <% end %>
+      </div>
+     </tbody>
+  </table>
 </div>         
         
         
