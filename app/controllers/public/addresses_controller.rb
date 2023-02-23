@@ -14,7 +14,6 @@ class Public::AddressesController < ApplicationController
     @address.customer_id = current_customer.id
     if @address.save
       redirect_to addresses_path
-      render :index
     end
   end
 
