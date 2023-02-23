@@ -4,7 +4,7 @@
     <tr>
       <th>購入者</th>
       <td>
-        <%= link_to admin_customer_path(@order.customer) do %>
+        <%= link_to admin_customer_path(@order.customer_id) do %>
           <%= @order.customer.full_name %>
         <% end %>
       </td>
