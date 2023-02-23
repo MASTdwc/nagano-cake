@@ -9,12 +9,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-   
+
     #@cart_item = CartItem.find(params[:id])#urlから引っ張ってくるid
     @cart_items= current_customer.cart_items.all
     #今ログインしているuserにアソシエーションで紐づいているcart_items
     @total_price = CartItem.total_price(current_customer)
-   
+
     if params[:order][:select_address]=='0'
       @order.postal_code=current_customer.postcode
       @order.name=current_customer.last_name+current_customer.first_name
@@ -53,15 +53,15 @@ class Public::OrdersController < ApplicationController
         order_detail.price = cart_item.item.price
         order_detail.save
       end
-      redirect_to order_path
       @cart_items.destroy_all
+      redirect_to order_path(@order)
 
     else
       @order = Order.new(order_params)
       render :new
     end
   end
-  
+
   def complete
   end
 
@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
   private
 
     def order_params
-        params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code ,:customer_id,:total_payment, :status)
+        params.permit(:shipping_cost, :payment_method, :name, :address, :postal_code ,:customer_id,:total_payment, :status)
     end
 
 
