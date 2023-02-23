@@ -32,9 +32,9 @@
         <tr>
           <th>注文ステータス</th>
           <td>
-            <%= form_with model: @order, url: admin_order_path(@order) do |f| %></td>
-              <%= f.select :status, Order.statuses_i18n.invert %>
-              <%= f.submit "更新", class: "btn btn-primary" %>
+            <%= form_with model: Order, url: admin_order_path(@order.id), method: :patch do |f| %>
+            <%= f.select :status, Order.statuses_i18n.map{|k,v| [v,k]},{selected: @order.status} %>
+            <%= f.submit '更新', class:'btn btn-primary' %></td>
             <% end %>
         </tr>
       </table>
