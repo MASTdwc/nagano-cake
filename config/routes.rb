@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
     get "customers/show" => "customers#show", as:"customers_my_page"
-    get "customers/edit" => "customers#edit", as:"information/edit"
-    patch "customers/update" => "customers#update", as:"information"
+    get 'customers/information/edit' => 'customers#edit', as: 'edit_customer'
+    patch 'customers/information' => 'customers#update', as: 'update_customer'
     get "customers/unsubscribe" => "customers#unsubscribe", as:"unsubscribe"
     patch "customers/withdraw" => "customers#withdraw", as:"withdraw"
 
@@ -42,3 +42,7 @@ Rails.application.routes.draw do
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+
+
