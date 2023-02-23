@@ -3,7 +3,7 @@
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
    <h2>商品一覧</h2>
     <%=link_to new_admin_item_path do %>
-     <p>+</p>
+     <p>+商品の追加</p>
     <% end %>
    <table class='table table-hover table-inverse'>
      <thead>
@@ -22,7 +22,17 @@
         <td><%= link_to item.name, admin_item_path(item.id)%></td>
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
-        <td><%= !item.is_active ? '販売中止中' : "販売中" %></td>
+        <td>
+         <% if item.is_active %>
+         <div class= "text-success">
+          販売中
+         </div>
+         <% else %>
+         <div class= "text-danger">
+          販売停止中
+         </div>
+         <% end %>
+        </td>
       </tr>
       <% end %>
      </tbody>
@@ -31,6 +41,7 @@
    </div>
  </div>
 </div>
+
 
 
 
