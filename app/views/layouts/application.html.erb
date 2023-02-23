@@ -20,7 +20,10 @@
       <!--ナビリストの右寄せ-->
        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
+      <% if not request.fullpath.include? "admin" %>
       <% if customer_signed_in? %>
+        <li class="nav-item mr-5 pt-2">
+          ようこそ！<%= current_customer.last_name %><%= current_customer.first_name %>さん！！
         <li style="margin: 10px">
           <%= link_to customers_my_page_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">マイページ</button>
@@ -42,34 +45,7 @@
           <% end %>
         </li>
 
-      <% elsif admin_signed_in? %>
-        <li style="margin; 10px">
-          <%= link_to class:"nav-link text-light" do %>
-          <button type="button" class="btn btn-light">商品一覧</button>
-          <% end %>
-        </li>
-        <li style="margin; 10px">
-          <%= link_to class:"nav-link text-light" do %>
-          <button type="button" class="btn btn-light">会員一覧</button>
-          <% end %>
-        </li>
-        <li style="margin; 10px">
-          <%= link_to class:"nav-link text-light" do %>
-          <button type="button" class="btn btn-light">注文履歴一覧</button>
-          <% end %>
-        </li>
-        <li style="margin; 10px">
-          <%= link_to class:"nav-link text-light" do %>
-          <button type="button" class="btn btn-light">ジャンル一覧</button>
-          <% end %>
-        </li>
-        <li style="margin; 10px">
-          <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link text-light" do %>
-          <button type="button" class="btn btn-light">ログアウト</button>
-          <% end %>
-        </li>
-
-      <% else %>
+        <% else %>
         <li style="margin; 10px">
           <%= link_to about_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">About</button>
@@ -90,6 +66,37 @@
           <button type="button" class="btn btn-light">ログイン</button>
           <% end %>
         </li>
+      <% end %>
+
+      <% else %>
+      <% if admin_signed_in? %>
+        <li style="margin; 10px">
+          <%= link_to admin_items_path class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">商品一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to admin_customers_path class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">会員一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to orders_path class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">注文履歴一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to admin_genres_path class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">ジャンル一覧</button>
+          <% end %>
+        </li>
+        <li style="margin; 10px">
+          <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link text-light" do %>
+          <button type="button" class="btn btn-light">ログアウト</button>
+          <% end %>
+        </li>
+
+      <% end %>
         </ul>
       </div>
 
@@ -104,7 +111,7 @@
   </header>
 
     <%= yield %>
-      <footer  class="navbar navbar-expand-lg" style="background-color:  #DAC3B2;">
+      <!--<footer  class="navbar navbar-expand-lg" style="background-color:  #DAC3B2;">-->
         <div class="container mt-5">
         </div>
         <div class="row"></div>
