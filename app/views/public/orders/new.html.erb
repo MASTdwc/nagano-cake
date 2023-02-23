@@ -1,10 +1,12 @@
 <div class="container">
-  <h2 class="my-3 px-3 col-md-4 text-center"> 注文情報入力</h2>
+  <br>
+   <h4><span class="bg-light"> 注文情報入力<span></h4>
   <div class="row">
     <div class="col-lg-12">
       <%= form_with model: @order, url: confirm_path , method: :post do |f| %>
       <div>
-        <h4>支払い方法</h3>
+        <br>
+        <p><h5>■支払い方法</h5></p>
         <div class="col-md-12 table table-hover">
           <p>
             <%= f.radio_button :payment_method, "credit_card" %>
@@ -15,14 +17,15 @@
             <%= f.label :payment_method_transfer, "銀行振込" %>
           </p>
         </div>
-        <h4>お届け先</h3>
+        <h5>■お届け先</h5>
         <div class="col-md-12 table table-hover">
           <p><%= f.radio_button :select_address,0,{:checked => true} %>ご自身の住所</p>
-          <p><% @customer.address %></p>
+         <div class="ml-4"><%= "〒 " + @customer.postcode + " " +  @customer.address %></div> 
+         <div class="ml-4"><%= "   " + @customer.last_name + @customer.first_name %>様</div>
         </div>
         <div class="col-md-12 table table-hover">
-          <p><%= f.radio_button :address_option, 1 %><%= f.label :address_option, "登録済住所から選択" %></p>
-          <p><%= f.select :address_id, options_from_collection_for_select(@addresses,:id,:address_display) %></p>
+          <p><%= f.radio_button :address_option, 1 %><%= f.label :address_option, "登録済住所から選択" %>
+          <%= f.select :address_id, options_from_collection_for_select(@addresses,:id,:address_display) %></p>
         </div>
         <div class="col-md-12 table table-hover">
           <p><%= f.radio_button :select_address,2 %>新しいお届け先</p>
