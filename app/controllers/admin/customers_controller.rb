@@ -2,10 +2,10 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
 
     def index
-      #@customers = Customer.page(params[:page])  ページネーション
-      @customers = Customer.all
-      @customer = Customer.find(params[:id])
-
+      @customers = Customer.page(params[:page])  
+      #@customers = Customer.allページネーション
+    end
+    
     def show
       @customer = Customer.find(params[:id])
     end
@@ -25,9 +25,8 @@ class Admin::CustomersController < ApplicationController
 
     end
 
-      private
-        def customer_params
-          params.require(:customer).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:email,:postcode,:address,:phone_number,:is_customer_deleted)
-        end
+  private
+    def customer_params
+      params.require(:customer).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:email,:postcode,:address,:phone_number,:is_customer_deleted)
     end
 end
