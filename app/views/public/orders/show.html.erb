@@ -60,11 +60,10 @@
         </tr>
         <tr>
           <th class="table-light">ご請求額</th>
-          <td><%= @order.total_payment.to_s(:delimited) %></td>
+          <td><%= (@total_price + 800).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
   </div>
 </div>
 
-#/orders/completeで遷移できない
