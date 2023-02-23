@@ -15,15 +15,15 @@
       </div>
       <br>
       <div>
-         <p>郵便番号<%=@customer.postal_code %></p>
+         <p>郵便番号<%=@customer.postcode %></p>
       </div>
       <br>
       <div>
-         <p>住所<%=@customer.adress %></p>
+         <p>住所<%=@customer.address %></p>
       </div>
       <br>
       <div>
-         <p>電話番号<%=@customer.telephone_number %></p>
+         <p>電話番号<%=@customer.phone_number %></p>
       </div>
       <br>
       <div>
@@ -32,7 +32,7 @@
       <br>
       <div>
          <p>会員ステータス
-           <% if @customer.is_deleted %>
+           <% if @customer.is_customer_deleted %>
               <span class="bg-danger">退会済</span>
            <% else %>
               <span class="bg-primary">有効会員</span>
@@ -40,7 +40,7 @@
           </p>
        </div>
        <span>
-         <%=link_to "編集する”,edit_admin_customer_path(@customer),class:"btn btn-primary" %>
+         <%=link_to "編集する", edit_admin_customer_path(@customer.id),class:"btn btn-primary" %>
        </span>
        <span>
          <%=link_to "注文履歴一覧を見る",admin_orders_path,class:"btn btn-primary" %>
