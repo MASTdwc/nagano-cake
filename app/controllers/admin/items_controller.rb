@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @genre = @item.genre
-    @total_price = @item.price * 1.08
+    @total_price = @item.price * 1.10
   end
 
   def edit
@@ -43,6 +43,7 @@ class Admin::ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction,  :price, :is_active, :image, :genre_id)
   end
 end
+
 
 
 
