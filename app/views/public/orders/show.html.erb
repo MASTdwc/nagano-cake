@@ -40,8 +40,8 @@
             <tr>
               <td><%= order_item.item.name %></td>
               <td><%= order_item.price.to_s(:delimited) %></td>
-              <td><%= order_item.count %></td>
-              <td><%= order_item.sub_total.to_s(:delimited) %></td>
+              <td><%= order_item.amount %></td>
+              <td><%= order_item.price.to_s(:delimited) %></td>
             </tr>
           <% end %>
         </tbody>
