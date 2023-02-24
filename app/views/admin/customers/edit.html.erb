@@ -45,10 +45,11 @@
      <div class="form-group col-md-9">
       <th><%= f.label :会員ステータス, class: "col-md-4 control-label" %></th>
       <td><%= f.select :is_customer_deleted, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
+     </div>
     <div>
+     
  
  
-  
   
     <%= f.submit "変更を保存",class:"btn btn-primary" %>
   <% end %>
