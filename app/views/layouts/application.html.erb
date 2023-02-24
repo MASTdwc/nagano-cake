@@ -22,46 +22,46 @@
           <ul class="navbar-nav ml-auto">
       <% if not request.fullpath.include? "admin" %>
       <% if customer_signed_in? %>
-        <li class="nav-item mr-5 pt-2">
-          ようこそ！<%= current_customer.last_name %><%= current_customer.first_name %>さん！！
-        <li style="margin: 10px">
+        <!--<li class="nav-item mr-5 pt-2">-->
+          <span class="navbar-brand mb-0 h1">ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！！</span>
+        <li class= "nav-item pl-3">
           <%= link_to customers_my_page_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">マイページ</button>
           <% end %>
         </li>
-        <li style="margin: 10px">
+        <li class= "nav-item pl-3">
           <%= link_to items_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">商品一覧</button>
           <% end %>
         </li>
-        <li style="margin: 10px">
+        <li class= "nav-item pl-3">
           <%= link_to cart_items_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">カート</button>
           <% end %>
         </li>
-        <li style="margin: 10px">
+        <li class= "nav-item pl-3">
           <%= link_to destroy_customer_session_path, method: :delete, class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">ログアウト</button>
           <% end %>
         </li>
 
         <% else %>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to about_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">About</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to items_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">商品一覧</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to new_customer_registration_path, class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">新規登録</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to customer_session_path, class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">ログイン</button>
           <% end %>
@@ -70,27 +70,27 @@
 
       <% else %>
       <% if admin_signed_in? %>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to admin_items_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">商品一覧</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to admin_customers_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">会員一覧</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to admin_root_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">注文履歴一覧</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to admin_genres_path class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">ジャンル一覧</button>
           <% end %>
         </li>
-        <li style="margin; 10px">
+        <li class= "nav-item pl-3">
           <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link text-light" do %>
           <button type="button" class="btn btn-light">ログアウト</button>
           <% end %>
