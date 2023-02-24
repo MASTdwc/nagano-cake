@@ -11,7 +11,23 @@
     </div>
   </div>
 
-<h3>新着商品</h3>
-<!--アイテムリストから画像などを挿入予定-->
+  <h3>新着商品</h3>
+    <div class="card-group">
+      <% @item.first(4).each do |item| %>
+        <div class="col-2 mx-auto">
+          <%= link_to items_path(item.id) do %>
+            <%= image_tag item.get_image, size: '200x150' %>
+          <% end %>
+          <p><%= item.name %></p>
+          <p>￥<%= item.price.to_s(:delimited) %></p>
+        </div>
+      <% end %>
+    </div>
+
+  <div class="row">
+    <div class="col-12 text-right">
+      <%= link_to "すべての商品を見る >>", items_path %>
+    </div>
+  </div>
 </div>
 
