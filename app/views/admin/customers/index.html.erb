@@ -1,4 +1,7 @@
-<h1>会員一覧</h1>
+<div class="container-fluid px-5 mt-5">
+  <div class= "row">
+    <h2>会員一覧</h2>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -15,9 +18,9 @@
         <td><%= link_to (customer.last_name+customer.first_name),admin_customer_path(customer.id) %></td>
         <td><%= customer.email %></td>
         <td><% if customer.is_customer_deleted %>
-          退会済み
+              <div class="text-danger">退会済</div>
             <% else %>
-          有効
+              <div class="text-success">有効会員</div>
             <% end %>
         </td>
       </tr>
