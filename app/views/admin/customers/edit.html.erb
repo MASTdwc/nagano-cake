@@ -1,59 +1,77 @@
-<div class='container'>
-  <h3><%=@customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
-    <div class='row'>
-     <div calss="col-md-12">
-       <%= form_with model:@customer,url:admin_customer_path do |f| %>
- 
- <div class="col-md-10">
- <div class="form-group col-md-9">
-     <%= f.label "会員ID", class: "col-md-4 control-label" %>
-     <%= f.label @customer.id %>
- </div>
- 
-  <div class="form-group col-md-9">
-     <%= f.label "氏名", class: "col-md-4 control-label" %>
-     <%= f.text_field :last_name, class: "col-md-3" %>
-     <%= f.text_field :first_name, class: "col-md-3" %>
- </div>
- 
-  <div class="form-group col-md-9">
-     <%= f.label "フリガナ", class: "col-md-4 control-label" %>
-     <%= f.text_field :last_name_kana, class: "col-md-3" %>
-     <%= f.text_field :first_name_kana, class: "col-md-3" %>
- </div>
- 
- <div class="form-group col-md-9">
-     <%= f.label "郵便番号", class: "col-md-4 control-label" %>
-     <%= f.text_field :postcode, class: "col-md-3" %>
- </div>
- 
-  <div class="form-group col-md-9">
-     <%= f.label "住所", class: "col-md-4 control-label" %>
-     <%= f.text_field :address, class: "col-md-8" %>
+<div class="offset-1">
+	<div class="ml-5">
+	  <div class="ml-5">
+     <mark class="h3 bg-light ml-5 mb-5 px-4"><%=@customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+   </div>
   </div>
-  
-   <div class="form-group col-md-9">
-     <%= f.label "電話番号", class: "col-md-4 control-label" %>
-     <%= f.text_field :phone_number, class: "col-md-3" %>
-   </div>
-   
-   <div class="form-group col-md-9">
-     <%= f.label "メールアドレス", class: "col-md-4 control-label" %>
-     <%= f.text_field :email, class: "col-md-5" %>
-   </div>
-     
-     <div class="form-group col-md-9">
-      <th><%= f.label :会員ステータス, class: "col-md-4 control-label" %></th>
-      <td><%= f.select :is_customer_deleted, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
-     </div>
-    <div>
-     
- 
- 
-  
-    <%= f.submit "変更を保存",class:"btn btn-primary" %>
-  <% end %>
-
+ </div>
+ <div class='container'>
+    <div class='row mt-4 ml-4'>
+       <%= form_with model:@customer,url:admin_customer_path do |f| %>
+       <div class="col-md-12 ml-3">
+        <table class='table table-borderless'>
+         <tbody>
+          <tr>
+            <td style="width: 30%"><%= f.label :id,"会員ID"%></td> 
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%"><%= f.label :name, "氏名" %></td>
+            <td><%= f.text_field :last_name, class: "form-control last_name" %></td>
+            <td><%= f.text_field :first_name, class: "form-control first_name" %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%"><%= f.label :name_kana, "フリガナ" %></td>
+            <td><%= f.text_field :last_name_kana, class: "form-control last_name_kana" %></td>
+            <td><%= f.text_field :first_name_kana, class: "form-control first_name_kana" %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%"><%= f.label :postcode, "郵便番号" %></td>
+            <td><%= f.text_field :postcode, class: "form-control postcode" %></td>
+          </tr>
+         </tbody>
+       </table>
+       <table class='table table-borderless'>
+         <tbody>
+          <tr>
+            <td style="width: 30%"><%= f.label :address, "住所" %></td>
+            <td><%= f.text_field :address, size:"50",class: "form-control address" %></td>
+          </tr>
+         </tbody>
+       </table>
+       <table class='table table-borderless'>
+        <tbody>
+          <tr>
+            <td style="width: 30%"><%= f.label :phone_number, "電話番号" %></td>
+            <td><%= f.text_field :phone_number, class: "form-control phone_number" %></td>
+            <td style="width: 35%"></td>
+          </tr>
+          <tr>
+            <td style="width: 30%"><%= f.label :email, "メールアドレス" %></td>
+            <td><%= f.email_field :email, size: "20", class: "form-control email" %></td>
+            <td style="width: 35%"></td>
+          </tr>
+          <tr>
+            <td style="width: 30%">会員ステータス</td>
+            <td>
+              <%= f.radio_button :is_customer_deleted, :false %><%= f.label :is_customer_deleted, "有効" %>&emsp;
+              <%= f.radio_button :is_customer_deleted, :true %><%= f.label :is_customer_deleted, "退会" %>
+            </td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td></td>
+             <td><%= f.submit "変更を保存",class:"btn btn-primary" %></td>
+          </tr>
+         </tbody>
+      </table>
     </div>
+    <% end %>
   </div>
 </div>
+ 
+          
+ 
+ 
+ 
+   
