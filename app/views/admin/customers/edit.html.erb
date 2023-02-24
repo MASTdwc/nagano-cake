@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-     <h2><%=@customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+     <h3><%=@customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
 <%= form_with model:@customer,url:admin_customer_path do |f| %>
  
  
@@ -12,8 +12,8 @@
  
   <div class="form-group">
      <%= f.label "氏名" %>
-     <%= f.text_field :last_name, class: "form-control name" %>
-     <%= f.text_field :first_name, class: "form-control name" %>
+     <%= f.text_field :last_name %>
+     <%= f.text_field :first_name %>
  </div>
  
   <div class="form-group">
@@ -42,7 +42,10 @@
      <%= f.text_field :email %>
    </div>
      
-     
+     <div class="form-group">
+      <th><%= f.label :会員ステータス %></th>
+      <td><%= f.select :is_customer_deleted, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
+    <div>
  
  
   
