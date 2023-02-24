@@ -16,11 +16,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-<<<<<<< HEAD
     resources :orders, only: [:index, :show, :create, :update]
-=======
-    resources :orders, only: [:indes, :show, :create]
->>>>>>> origin/develop
     resources :order_details, only: [:update]
     resources :sessions, only: [:new, :create, :destroy]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
