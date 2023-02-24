@@ -16,20 +16,20 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-<<<<<<< HEAD
     resources :orders, only: [:index, :show, :create, :update]
-=======
-    resources :orders, only: [:indes, :show, :create]
->>>>>>> origin/develop
     resources :order_details, only: [:update]
     resources :sessions, only: [:new, :create, :destroy]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
   scope module: :public do
-    resources :orders, only: [:new, :index, :create, :show]
     post "orders/confirm"=>"orders#confirm",as:"confirm"
-    get "orders/complete"=>"orders#complete",as:"complete"
+    resources :orders, only: [:new, :index, :create, :show] do
+        collection do
+        get "orders/complete"=>"orders#complete",as:"complete"
+        end
+    end
+    
     delete "cart_items/destroy_all"=>"cart_items#destroy_all",as:"destroy_all"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]

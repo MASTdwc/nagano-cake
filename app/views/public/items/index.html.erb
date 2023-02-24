@@ -1,15 +1,12 @@
-<div class="container p-5">
-  <div class="row p-3">
-    <div class="mx-auto">
+<div class="container py-5">
+  <div class="row mt-5">
+    <div class="col-md-3">
       <p>
         <h2>商品一覧</h2>
         (全<%= @items.count %>件)
       </p>
-    </div>
-  </div>
-</div>
-
-<div class="#row p-3">
+      
+      <div class="#row p-3">
   <% @items.each do |item| %>
     <div class="col-3 mx-auto">
       <%= link_to item_path(item.id) do %>
@@ -26,6 +23,11 @@
     <%= paginate @items %>
   </div>
 </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
