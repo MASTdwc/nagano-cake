@@ -2,6 +2,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_detail = Order.find(params[:id])
     @order_details = @order.order_details.all
   end
 
@@ -13,7 +14,7 @@ class Admin::OrdersController < ApplicationController
       # 注文ステータスが「入金確認」のとき、製作ステータスをすべて「製作待ち」に更新する
     redirect_to admin_order_path(@order)
     end
-    
+
   end
 
   private
