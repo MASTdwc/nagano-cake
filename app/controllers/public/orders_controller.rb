@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
       @order.address=current_customer.address
     elsif params[:order][:select_address]=='1'
       @address=Address.find(params[:order][:address_id])
-      @order.post_code=@address.postal_code
+      @order.postal_code=@address.postal_code
       @order.name=@address.name
       @order.address=@address.address
     elsif params[:order][:select_address]=='2'
@@ -37,8 +37,9 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderDetail.where(order_id:params[:id])
+    @order_details = OrderDetail.where(order_id:params[:id])
     @total_price = CartItem.total_price(current_customer)
+    
   end
 
   def create
