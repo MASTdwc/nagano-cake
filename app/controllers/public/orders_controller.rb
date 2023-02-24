@@ -9,7 +9,6 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-
     #@cart_item = CartItem.find(params[:id])#urlから引っ張ってくるid
     @cart_items= current_customer.cart_items.all
     #今ログインしているuserにアソシエーションで紐づいているcart_items
@@ -27,6 +26,10 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address]=='2'
       @order.customer_id=current_customer.id
     end
+    
+    redirect_to complete_orders_path
+    
+   
   end
 
   def index
