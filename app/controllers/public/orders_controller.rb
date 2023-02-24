@@ -26,10 +26,10 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address]=='2'
       @order.customer_id=current_customer.id
     end
-    
+
     redirect_to complete_orders_path
-    
-   
+
+
   end
 
   def index
@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id:params[:id])
     @total_price = CartItem.total_price(current_customer)
-    
+
   end
 
   def create
@@ -68,6 +68,9 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
+  
+  
+  
 
 
 
@@ -81,3 +84,7 @@ class Public::OrdersController < ApplicationController
 
 
 end
+
+
+
+
