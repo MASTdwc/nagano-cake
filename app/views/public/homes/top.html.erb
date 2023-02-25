@@ -1,0 +1,33 @@
+<div class="container p-5">
+  <div class="row p-3">
+    <div class="mx-auto">
+      <%= image_tag 'ケーキ03.jpg', size: '650x400', class: "img-fluid" %>
+        <p style="font-family: Hiragino Maru Gothic Pro;" >
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+    </div>
+  </div>
+
+  <h3>新着商品</h3>
+    <div class="card-group">
+      <% @item.first(4).each do |item| %>
+        <div class="col-md-3 mx-auto">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image, size: '200x150' %>
+          <% end %>
+          <p><%= item.name %></p>
+          <p>￥<%= item.price.to_s(:delimited) %></p>
+        </div>
+      <% end %>
+    </div>
+
+  <div class="row">
+    <div class="col-12 text-right">
+      <%= link_to "すべての商品を見る >>", items_path %>
+    </div>
+  </div>
+</div>
+

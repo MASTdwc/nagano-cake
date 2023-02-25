@@ -1,0 +1,55 @@
+<!--<div class="container py-5">-->
+<!--  <div class="row mt-5">-->
+<!--    <div class="col-md-3">-->
+<div class="container p-5">
+  <p>
+    <h2>商品一覧</h2>
+    (全<%= @items.count %>件)
+  </p>
+  <div class="row">
+    <!--<div class="d-flex flex-wrap">-->
+      <% @items.each do |item| %>
+        <div class="col-md-3">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.image, size: "200x160" %>
+                  <% end %>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= item.name %></td>
+              </tr>
+              <tr>
+                <td>￥<%= item.price.to_s(:delimited) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    <!--</div>-->
+    <div class="col-md-3"></div>
+  </div>
+
+    <div class="row p-3">
+      <div class="col-md-6 offset-md-3 py-2">
+        <div class="text-center">
+          <%= paginate @items %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--</div>-->
+
+
+
+
+
+
+
+
