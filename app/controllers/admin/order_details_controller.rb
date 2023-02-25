@@ -19,9 +19,9 @@ class Admin::OrderDetailsController < ApplicationController
     @order = OrderDetail.find(params[:id])
     if @order.update(order_detail_params)
       flash[:notice] = "successfully"
-      redirect_to admin_order_path(@order)
+      redirect_to admin_order_path(@order.order.id)
     else
-      admin_order_path(@order)
+      admin_order_path(@order.order.id)
     end
 
   end
