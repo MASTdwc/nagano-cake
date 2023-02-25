@@ -27,12 +27,9 @@ class Public::OrdersController < ApplicationController
       @order.customer_id=current_customer.id
     end
 
-<<<<<<< HEAD
-=======
     # redirect_to complete_orders_path
 
 
->>>>>>> origin/develop
   end
 
   def index
@@ -51,8 +48,9 @@ class Public::OrdersController < ApplicationController
   def create
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    if @order.save!
-      @cart_items.each do |cart_item|
+    @order.save!
+    
+    @cart_items.each do |cart_item|
         @order_detail = OrderDetail.new
         @order_detail.order_id = @order.id
         @order_detail.item_id = cart_item.item_id
@@ -63,12 +61,6 @@ class Public::OrdersController < ApplicationController
       
       CartItem.destroy_all
       redirect_to complete_orders_path
-
-    else
-      @order = Order.new(order_params)
-      render :new
-    end
-    
   end
 
   def complete
