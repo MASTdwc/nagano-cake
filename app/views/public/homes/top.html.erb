@@ -14,7 +14,7 @@
   <h3>新着商品</h3>
     <div class="card-group">
       <% @item.first(4).each do |item| %>
-        <div class="col-7 mx-auto">
+        <div class="col-md-3 mx-auto">
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.get_image, size: '200x150' %>
           <% end %>
