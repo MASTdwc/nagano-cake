@@ -29,9 +29,13 @@ Rails.application.routes.draw do
         get "orders/complete"=>"orders#complete",as:"complete"
         end
     end
+<<<<<<< HEAD
     
     post "orders/confirm"=>"orders#confirm",as:"confirm"
     
+=======
+
+>>>>>>> origin/develop
     delete "cart_items/destroy_all"=>"cart_items#destroy_all",as:"destroy_all"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]

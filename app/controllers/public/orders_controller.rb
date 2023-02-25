@@ -27,6 +27,12 @@ class Public::OrdersController < ApplicationController
       @order.customer_id=current_customer.id
     end
 
+<<<<<<< HEAD
+=======
+    # redirect_to complete_orders_path
+
+
+>>>>>>> origin/develop
   end
 
   def index
@@ -67,9 +73,9 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
-  
-  
+
+
+
 
 
 
