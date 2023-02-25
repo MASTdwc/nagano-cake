@@ -47,16 +47,16 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.save!
       @cart_items.each do |cart_item|
-        order_detail = OrderDetail.new
-        order_detail.order_id = @order.id
-        order_detail.item_id = cart_item.item_id
-        order_detail.amount = cart_item.amount
-        order_detail.price = cart_item.item.price
-        order_detail.save
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.amount = cart_item.amount
+        @order_detail.price = cart_item.item.price
+        @order_detail.save
     end
       
-      @cart_items.destroy_all
-      redirect_to order_path(@order)
+      CartItem.destroy_all
+      redirect_to complete_orders_path
 
     else
       @order = Order.new(order_params)
