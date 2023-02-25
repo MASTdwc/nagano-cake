@@ -11,12 +11,13 @@
     <% end %>
    <table class='table table-hover table-inverse'>
      <thead>
-      <tr>
+      <tr class= "table-secondary">
        <th>商品ID</th>
        <th>商品名</th>
        <th>税抜価格</th>
        <th>ジャンル</th>
        <th>ステータス</th>
+       <th colspan="3"></th>
       </tr>
      </thead>
      <tbody>
@@ -41,10 +42,18 @@
       <% end %>
      </tbody>
     </table>
-     <%= paginate @item %>
+    <div class= "row p-3">
+     <div class="col-3 mx-auto">
+      <%= paginate @item %>
+      </div>
+     </div> 
    </div>
  </div>
 </div>
+
+
+
+
 
 
 

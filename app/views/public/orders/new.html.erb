@@ -3,7 +3,7 @@
    <h4><span class="bg-light"> 注文情報入力<span></h4>
   <div class="row">
     <div class="col-lg-12">
-      <%= form_with model: @order, url: confirm_path , method: :post do |f| %>
+      <%= form_with model: @order, url: confirm_path ,local: true do |f| %>
       <div>
         <br>
         <p><h5>■支払い方法</h5></p>
@@ -20,7 +20,7 @@
         <h5>■お届け先</h5>
         <div class="col-md-12 table table-hover">
           <p><%= f.radio_button :select_address,0,{:checked => true} %>ご自身の住所</p>
-         <div class="ml-4"><%= "〒 " + @customer.postcode + " " +  @customer.address %></div> 
+         <div class="ml-4"><%= "〒 " + @customer.postcode + " " +  @customer.address %></div>
          <div class="ml-4"><%= "   " + @customer.last_name + @customer.first_name %>様</div>
         </div>
         <div class="col-md-12 table table-hover">
@@ -52,4 +52,7 @@
     </div>
   </div>
 </div>
+
+
+
 
