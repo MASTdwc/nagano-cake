@@ -2,9 +2,9 @@ class Public::OrdersController < ApplicationController
  before_action :authenticate_customer!
 
   def new
-    @order=Order.new
-    @customer=current_customer
-    @addresses=@customer.addresses
+    @order = Order.new
+    @customer = current_customer
+    @addresses = @customer.addresses
   end
 
   def confirm
@@ -48,22 +48,19 @@ class Public::OrdersController < ApplicationController
   def create
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    if @order.save
-      @cart_items.each do |cart_item|
-        order_detail = OrderDetail.new
-        order_detail.order_id = @order.id
-        order_detail.item_id = cart_item.item_id
-        order_detail.amount = cart_item.amount
-        order_detail.price = cart_item.item.price
-        order_detail.save
-      end
-      @cart_items.destroy_all
-      redirect_to order_path(@order)
-
-    else
-      @order = Order.new(order_params)
-      render :new
+    @order.save!
+    
+    @cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.amount = cart_item.amount
+        @order_detail.price = cart_item.item.price
+        @order_detail.save
     end
+      
+      CartItem.destroy_all
+      redirect_to complete_orders_path
   end
 
   def complete

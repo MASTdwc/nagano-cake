@@ -63,7 +63,7 @@
       </table>
     </div>
     <div class="col-1 mt-5 mb-5 mx-auto">
-      <%= form_with model:@order_new ,url:orders_path ,method: :post do |f| %>
+        <%= form_with model:@order_new ,url:orders_path,　method: :post do |f| %>
         <%= f.hidden_field:customer_id,value:current_customer.id %>
         <%= f.hidden_field:status,value:Order.statuses.key(0) %>
         <%= f.hidden_field:name,value:@order.name %>
