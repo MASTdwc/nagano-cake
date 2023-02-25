@@ -23,13 +23,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    post "orders/confirm"=>"orders#confirm",as:"confirm"
+    
     resources :orders, only: [:new, :index, :create, :show] do
         collection do
         get "orders/complete"=>"orders#complete",as:"complete"
         end
     end
-
+    
+    post "orders/confirm"=>"orders#confirm",as:"confirm"
+    
     delete "cart_items/destroy_all"=>"cart_items#destroy_all",as:"destroy_all"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]
