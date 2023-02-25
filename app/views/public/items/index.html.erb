@@ -2,12 +2,12 @@
 <!--  <div class="row mt-5">-->
 <!--    <div class="col-md-3">-->
 <div class="container p-5">
+  <p>
+    <h2>商品一覧</h2>
+    (全<%= @items.count %>件)
+  </p>
   <div class="row">
-    <p>
-      <h2>商品一覧</h2>
-      (全<%= @items.count %>件)
-    </p>
-    <div class="d-flex flex-wrap">
+    <!--<div class="d-flex flex-wrap">-->
       <% @items.each do |item| %>
         <div class="col-md-3">
           <table>
@@ -31,7 +31,7 @@
           </table>
         </div>
       <% end %>
-    </div>
+    <!--</div>-->
     <div class="col-md-3"></div>
   </div>
 
