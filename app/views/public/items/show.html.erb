@@ -1,7 +1,7 @@
 <div class="container p-5">
   <div class="row p-3">
     <div class="mx-auto">
-      <%= image_tag @item.image, size: "100,100" %>
+      <%= image_tag @item.image,  class:"img-fluid w-100 h-100" %>
     </div>
       <!--注文フォーム-->
     <%= form_with model:@cart_item,url:cart_items_path do |f| %>
