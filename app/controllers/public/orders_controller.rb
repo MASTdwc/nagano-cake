@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
       @order.customer_id=current_customer.id
     end
 
-    redirect_to complete_orders_path
+    # redirect_to complete_orders_path
 
 
   end
@@ -68,9 +68,9 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
-  
-  
+
+
+
 
 
 
